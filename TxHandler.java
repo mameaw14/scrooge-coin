@@ -11,7 +11,7 @@ public class TxHandler {
 	private UTXOPool utxoPool;
 
 	public TxHandler(UTXOPool utxoPool) {
-		utxoPool = UTXOPool(utxoPool);
+		this.utxoPool = UTXOPool(utxoPool);
 	}
 
 	/* Returns true if 
@@ -38,7 +38,7 @@ public class TxHandler {
 				return false;
 			}
 			// (2) Validate signature
-			if (!output.address.verifySignature(getRawDataToSign(i), input.signature)) {
+			if (!output.address.verifySignature(tx.getRawDataToSign(i), input.signature)) {
 				return false;
 			}
 			// (3) No multiple UXTO claimed
